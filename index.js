@@ -28,6 +28,8 @@ function playRound(playerChoice, computerChoice)  {
       if (playerChoice === 'paper')  message = "You Lose! Scissors beat Paper";
     }
   }
+
+  if (message === '') message = "Invalid Input!";
   return message;
 }
 function game() {
@@ -41,12 +43,19 @@ function game() {
     
     let checkWin = message.search('Win'),
     checkDraw = message.search('Tie');
-    
-    if (checkWin === -1 && checkDraw === -1)  computerChoice++;
-    if (checkWin !== -1)  playerWinCount++;
-    
-    if (i === 5)  console.log('Final Score: ' + playerWinCount + ' - ' + computerWinCount);
-    else  console.log('Score: ' + playerWinCount + ' - ' + computerWinCount);
+    if (message.search('Invalid') !== -1) {
+      //condition to check if message is invalid
+      i--;
+      console.log(message);
+    }
+    else {
+      if (checkWin === -1 && checkDraw === -1)  computerChoice++;
+      if (checkWin !== -1)  playerWinCount++;
+      
+      if (i === 5) console.log('Final Score: ' + playerWinCount + ' - ' + computerWinCount);
+      else console.log('Score: ' + playerWinCount + ' - ' + computerWinCount);
+    }
+
 
   }
   if (playerWinCount > computerWinCount)  console.log('You Win Overall!');
