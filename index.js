@@ -1,6 +1,13 @@
 //make function to return computer's move
 function getComputerChoice()  {
-  return Math.floor(Math.random() * 2 + 1);
+  let choiceStr = '';
+  let choiceNum = Math.floor(Math.random() * 2 + 1);
+  
+  if (choiceNum === 1)  choiceStr = 'rock';
+  if (choiceNum === 2)  choiceStr = 'paper';
+  if (choiceNum === 3)  choiceStr = 'scissors';
+  
+  return choiceStr;
 }
 function playRound(playerChoice, computerChoice)  {
   playerChoice = playerChoice.toLowerCase();
