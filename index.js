@@ -35,7 +35,6 @@ function playRound(playerChoice, computerChoice)  {
 function game() {
   let playerWinCount = 0, computerWinCount = 0;
   for (let i = 1; i <= 5; i++) {
-    console.clear();
     let playerChoice = prompt('Enter your move: '),
     computerChoice = getComputerChoice();
     let message = playRound(playerChoice, computerChoice)
