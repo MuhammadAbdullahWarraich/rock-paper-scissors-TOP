@@ -49,5 +49,7 @@ function game() {
     else  console.log('Score: ' + playerWinCount + ' - ' + computerWinCount);
 
   }
+  if (playerWinCount > computerWinCount)  console.log('You Win Overall!');
+  else console.log('Computer Wins Overall!');
 }
 game();
