@@ -37,5 +37,12 @@ function game() {
   let message = playRound(playerChoice, computerChoice)
   console.log(message);
   
+  let checkWin = message.search('Win'),
+  checkDraw = message.search('Tie');
+  
+  if (checkWin === -1 && checkDraw === -1)  computerChoice++;
+  if (checkWin !== -1)  playerWinCount++;
+  
+  console.log('Score: ' + playerWinCount + ' - ' + computerWinCount);
 }
 game();
