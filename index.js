@@ -13,7 +13,7 @@ function playRound(playerChoice, computerChoice)  {
   playerChoice = playerChoice.toLowerCase();
   let message = '';
   if (playerChoice === computerChoice)  message = "Tie! No one wins this round";
-    
+  
   else  {
     if (computerChoice === 'rock')  {
       if (playerChoice === 'paper') message = "You Win! Paper beats Rock";
@@ -30,3 +30,12 @@ function playRound(playerChoice, computerChoice)  {
   }
   return message;
 }
+function game() {
+  let playerWinCount = 0, computerWinCount = 0;
+  let playerChoice = prompt('Enter your move: '),
+  computerChoice = getComputerChoice();
+  let message = playRound(playerChoice, computerChoice)
+  console.log(message);
+  
+}
+game();
