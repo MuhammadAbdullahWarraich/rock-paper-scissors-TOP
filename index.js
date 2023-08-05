@@ -32,17 +32,19 @@ function playRound(playerChoice, computerChoice)  {
 }
 function game() {
   let playerWinCount = 0, computerWinCount = 0;
-  let playerChoice = prompt('Enter your move: '),
-  computerChoice = getComputerChoice();
-  let message = playRound(playerChoice, computerChoice)
-  console.log(message);
-  
-  let checkWin = message.search('Win'),
-  checkDraw = message.search('Tie');
-  
-  if (checkWin === -1 && checkDraw === -1)  computerChoice++;
-  if (checkWin !== -1)  playerWinCount++;
-  
-  console.log('Score: ' + playerWinCount + ' - ' + computerWinCount);
+  for (let i = 0; i < 5; i++) {
+    let playerChoice = prompt('Enter your move: '),
+    computerChoice = getComputerChoice();
+    let message = playRound(playerChoice, computerChoice)
+    console.log(message);
+    
+    let checkWin = message.search('Win'),
+    checkDraw = message.search('Tie');
+    
+    if (checkWin === -1 && checkDraw === -1)  computerChoice++;
+    if (checkWin !== -1)  playerWinCount++;
+    
+    console.log('Score: ' + playerWinCount + ' - ' + computerWinCount);
+  }
 }
 game();
