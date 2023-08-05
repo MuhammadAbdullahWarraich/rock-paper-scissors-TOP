@@ -32,7 +32,7 @@ function playRound(playerChoice, computerChoice)  {
 }
 function game() {
   let playerWinCount = 0, computerWinCount = 0;
-  for (let i = 0; i < 5; i++) {
+  for (let i = 1; i <= 5; i++) {
     console.clear();
     let playerChoice = prompt('Enter your move: '),
     computerChoice = getComputerChoice();
@@ -45,7 +45,9 @@ function game() {
     if (checkWin === -1 && checkDraw === -1)  computerChoice++;
     if (checkWin !== -1)  playerWinCount++;
     
-    console.log('Score: ' + playerWinCount + ' - ' + computerWinCount);
+    if (i === 5)  console.log('Final Score: ' + playerWinCount + ' - ' + computerWinCount);
+    else  console.log('Score: ' + playerWinCount + ' - ' + computerWinCount);
+
   }
 }
 game();
