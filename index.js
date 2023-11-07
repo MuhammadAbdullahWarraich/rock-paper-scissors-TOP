@@ -33,31 +33,32 @@ function playRound(playerChoice, computerChoice)  {
   return message;
 }
 function game() {
+  console.log("entered game function");
+  const currentScore = document.querySelector('.current-score');
   let playerWinCount = 0, computerWinCount = 0;
-  for (let i = 1; i <= 5; i++) {
-    let playerChoice = prompt('Enter your move: '),
-    computerChoice = getComputerChoice();
-    let message = playRound(playerChoice, computerChoice)
-    console.log(message);
-    
-    let checkWin = message.search('Win'),
-    checkDraw = message.search('Tie');
-    if (message.search('Invalid') !== -1) {
-      //condition to check if message is invalid
-      i--;
+  const userChoiceButtons = document.querySelectorAll('.userchoice');
+  const matchResult = document.querySelector('.result-display');
+  userChoiceButtons.forEach(button => {
+    button.addEventListener('click', ()=>{
+      let playerChoice = "";
+    //  if (button.id === 'rock') playerChoice = 'rock';
+    //  else if (button.id === 'paper') playerChoice = paper;
+    //  else playerChoice = 'scissors';
+      playerChoice = button.id;
+      let message = playRound(playerChoice, getComputerChoice());
+      matchResult.textContent = message;
       console.log(message);
-    }
-    else {
-      if (checkWin === -1 && checkDraw === -1)  computerChoice++;
-      if (checkWin !== -1)  playerWinCount++;
-      
-      if (i === 5) console.log('Final Score: ' + playerWinCount + ' - ' + computerWinCount);
-      else console.log('Score: ' + playerWinCount + ' - ' + computerWinCount);
-    }
-
-
-  }
-  if (playerWinCount > computerWinCount)  console.log('You Win Overall!');
-  else console.log('Computer Wins Overall!');
+      if (message.includes('Win')) playerWinCount++;
+      else if (message.includes('Lose')) computerWinCount++;
+      currentScore.textContent = "Current Score = " + playerWinCount + " - " + computerWinCount; 
+      if (computerWinCount == 5 || playerWinCount == 5){
+        matchResult.textContent += "\n\nTHE FINAL WINNER IS ...\n";
+        if (computerWinCount == 5)  matchResult.textContent += "The Computer!!!";
+        else matchResult.textContent += "You!!! Wohoooo! Way to go dear user!";
+        computerWinCount = 0;
+        playerWinCount = 0;
+      } 
+    })
+  })
 }
 game();
